@@ -1,20 +1,19 @@
 #include<stdio.h>
 #include "timer.h"
 #include<omp.h>
-int pdss (int x){        
-	int r=1;     
-	int i;     
-	if(x==1||(x%2==0&&x!=2)||(x%3==0&&x!=3)){         
-		r=0;     
-	}else{         
-		for(i=5;i*i<x;i+=6){             
-			if(x%i==0||x%(i+2)==0){                 
-				r=0;         
-				break;             
-			}         
-		}     
-	}     
-	return r; 
+int pdss (int n){        
+	if (n <= 3) {
+        return n > 1;
+    } else if (n % 2 == 0 || n % 3 == 0) {
+        return 0;
+    } else {
+        for (int i = 5; i * i <= n; i += 6) {
+            if (n % i == 0 || n % （i + 2） == 0) {
+                return 0;
+            }
+        }
+        return 1;
+    }
 }
 int main (){
 	int a;
